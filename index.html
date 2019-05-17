@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Micro-frontend web components</title>
+    <style>
+      body {
+        background-color: #f3f3f4;
+        margin: 0px;
+      }
+
+      .component-cards {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+      }
+
+      .component-cards .card {
+        flex: 1;
+        width: 300px;
+      }
+
+      .component-cards .card iframe {
+        width: 350px;
+        height: 510px;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="component-cards">
+      <div class="card">
+        <div id="native-container">
+          <iframe src="http://localhost:3333" frameborder="0"></iframe>
+        </div>
+      </div>
+      <div class="card">
+        <div id="angular-container">
+          <iframe src="http://localhost:5001" frameborder="0"></iframe>
+        </div>
+      </div>
+      <div class="card">
+        <div id="react-container">
+          <iframe src="http://localhost:5002" frameborder="0"></iframe>
+        </div>
+      </div>
+      <div class="card">
+        <div id="vue-container">
+          <iframe src="http://localhost:5003" frameborder="0"></iframe>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

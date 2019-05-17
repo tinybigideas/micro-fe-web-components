@@ -1,0 +1,1 @@
+import{a as r,b as a}from"./p-ceb262af.js";r().then(r=>a([["p-rdrnoakc",[[1,"rms-login",{name:[1],type:[1],email:[1],password:[1]}]]]],{resourcesUrl:r}));

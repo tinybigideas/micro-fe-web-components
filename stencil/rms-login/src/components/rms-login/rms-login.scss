@@ -1,0 +1,100 @@
+.login-form {
+  position: relative;
+  text-align: center;
+  width: 300px;
+  height: 450px;
+  overflow: hidden;
+  display: inline-block;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 13px;
+  background-color: #f3f3f4;
+  padding: 20px;
+
+  .type-flag {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &.native {
+      background-image: url('assets/native.svg');
+    }
+
+    &.angular {
+      background-image: url('assets/angular.png');
+    }
+
+    &.react {
+      background-image: url('assets/react.png');
+    }
+
+    &.vue {
+      background-image: url('assets/vue.png');
+    }
+  }
+
+  .logo {
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .form {
+    .form-group {
+      margin-bottom: 8px;
+      display: flex;
+
+      .form-control {
+        flex: 1;
+        border: 1px solid #e5e6e7;
+        display: block;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+      }
+    }
+
+    .btn {
+      width: 100%;
+      border-radius: 2px;
+      background: #fff;
+      border: 1px solid #e7e7e7;
+      margin-bottom: 0;
+      font-weight: normal;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      touch-action: manipulation;
+      cursor: pointer;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.42857;
+
+      &:hover {
+        background-color: #c41230;
+        color: white;
+      }
+    }
+  }
+
+  .question {
+    margin: 10px 0;
+    cursor: pointer;
+
+    a {
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.87);
+
+      small {
+        color: #337ab7;
+      }
+    }
+  }
+}
