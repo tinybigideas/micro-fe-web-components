@@ -844,6 +844,7 @@ var updateComponent = function (elm, hostRef, cmpMeta, isInitialLoad, instance) 
 };
 var postUpdateComponent = function (elm, hostRef, ancestorsActivelyLoadingChildren) {
     if (!elm['s-al']) {
+        var instance = hostRef.$lazyInstance$;
         var ancestorComponent = hostRef.$ancestorComponent$;
         if (!(hostRef.$flags$ & 512 /* hasLoadedComponent */)) {
             hostRef.$flags$ |= 512 /* hasLoadedComponent */;
@@ -876,6 +877,7 @@ var disconnectedCallback = function (elm) {
         if (cssVarShim) {
             cssVarShim.removeHost(elm);
         }
+        var instance = hostRef.$lazyInstance$;
     }
 };
 var parsePropertyValue = function (propValue, expectedPropType) {
@@ -973,7 +975,7 @@ var proxyComponent = function (Cstr, cmpMeta, isElementConstructor, proxyState) 
     return Cstr;
 };
 var initializeComponent = function (elm, hostRef, cmpMeta, hmrVersionId, Cstr) { return __awaiter(_this, void 0, void 0, function () {
-    var style_1, scopeId_1;
+    var style_1, scopeId_1, ancestorComponent;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -1009,6 +1011,7 @@ var initializeComponent = function (elm, hostRef, cmpMeta, hmrVersionId, Cstr) {
                 {
                     hostRef.$flags$ &= ~8 /* isConstructingInstance */;
                 }
+                fireConnectedCallback(hostRef.$lazyInstance$);
                 if (!(!Cstr.isStyleRegistered && Cstr.style)) return [3 /*break*/, 4];
                 style_1 = Cstr.style;
                 scopeId_1 = getScopeId(cmpMeta.$tagName$, hostRef.$modeName$);
@@ -1022,7 +1025,7 @@ var initializeComponent = function (elm, hostRef, cmpMeta, hmrVersionId, Cstr) {
                 Cstr.isStyleRegistered = true;
                 _a.label = 4;
             case 4:
-                // we've successfully created a lazy instance
+                ancestorComponent = hostRef.$ancestorComponent$;
                 {
                     scheduleUpdate(elm, hostRef, cmpMeta, true);
                 }
@@ -1030,6 +1033,8 @@ var initializeComponent = function (elm, hostRef, cmpMeta, hmrVersionId, Cstr) {
         }
     });
 }); };
+var fireConnectedCallback = function (instance) {
+};
 var connectedCallback = function (elm, cmpMeta) {
     if ((plt.$flags$ & 1 /* isTmpDisconnected */) === 0) {
         // connectedCallback
@@ -1053,6 +1058,7 @@ var connectedCallback = function (elm, cmpMeta) {
                 initializeComponent(elm, hostRef, cmpMeta);
             }
         }
+        fireConnectedCallback(hostRef.$lazyInstance$);
     }
 };
 var bootstrapLazy = function (lazyBundles, options) {

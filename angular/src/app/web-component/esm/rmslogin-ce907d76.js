@@ -800,6 +800,7 @@ const updateComponent = (elm, hostRef, cmpMeta, isInitialLoad, instance) => {
 };
 const postUpdateComponent = (elm, hostRef, ancestorsActivelyLoadingChildren) => {
     if (!elm['s-al']) {
+        const instance = hostRef.$lazyInstance$;
         const ancestorComponent = hostRef.$ancestorComponent$;
         if (!(hostRef.$flags$ & 512 /* hasLoadedComponent */)) {
             hostRef.$flags$ |= 512 /* hasLoadedComponent */;
@@ -833,6 +834,7 @@ const disconnectedCallback = (elm) => {
         if (cssVarShim) {
             cssVarShim.removeHost(elm);
         }
+        const instance = hostRef.$lazyInstance$;
     }
 };
 
@@ -961,6 +963,7 @@ const initializeComponent = async (elm, hostRef, cmpMeta, hmrVersionId, Cstr) =>
             {
                 hostRef.$flags$ &= ~8 /* isConstructingInstance */;
             }
+            fireConnectedCallback(hostRef.$lazyInstance$);
         }
         if (!Cstr.isStyleRegistered && Cstr.style) {
             // this component has styles but we haven't registered them yet
@@ -974,9 +977,13 @@ const initializeComponent = async (elm, hostRef, cmpMeta, hmrVersionId, Cstr) =>
         }
     }
     // we've successfully created a lazy instance
+    const ancestorComponent = hostRef.$ancestorComponent$;
     {
         scheduleUpdate(elm, hostRef, cmpMeta, true);
     }
+};
+
+const fireConnectedCallback = (instance) => {
 };
 const connectedCallback = (elm, cmpMeta) => {
     if ((plt.$flags$ & 1 /* isTmpDisconnected */) === 0) {
@@ -1000,6 +1007,7 @@ const connectedCallback = (elm, cmpMeta) => {
                 initializeComponent(elm, hostRef, cmpMeta);
             }
         }
+        fireConnectedCallback(hostRef.$lazyInstance$);
     }
 };
 

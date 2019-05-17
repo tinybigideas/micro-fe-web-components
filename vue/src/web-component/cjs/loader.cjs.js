@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const __chunk_1 = require('./rmslogin-81ed82cd.js');
+const __chunk_1 = require('./rmslogin-2af7cab0.js');
 
 const defineCustomElements = (win, options) => {
   return __chunk_1.patchEsm().then(() => {

@@ -1,1 +1,0 @@
-System.register(["./p-5b348486.system.js"],function(){"use strict";var e,t;return{setters:[function(s){e=s.a,t=s.b}],execute:function(){e().then(function(e){return t([["p-pfkno8at.system",[[1,"rms-login",{name:[1],type:[1],email:[1],password:[1]}]]]],{resourcesUrl:e})})}}});
