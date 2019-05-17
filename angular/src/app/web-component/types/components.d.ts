@@ -6,7 +6,7 @@
 
 
 import { HTMLStencilElement, JSXBase } from './stencil.core';
-import { JSX } from './stencil.core';
+
 
 
 export namespace Components {
@@ -32,7 +32,7 @@ declare namespace LocalJSX {
   }
 }
 
-export { LocalJSX as JSX };
+export { LocalJSX as any };
 
 
 declare module "@stencil/core" {
