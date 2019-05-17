@@ -7,7 +7,7 @@ import './web-component';
   template: `
     <rms-login
       #login
-      name="Miu Insights"
+      name="Angular App"
       [type]="type"
       (loginAttempt)="onLoginAttempt($event)"
     >
